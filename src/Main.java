@@ -10,6 +10,9 @@ public class Main {
 
         System.out.print("Bem vindo ao sistema de Sebo!");
 
+        Livro novoLivro = new Livro();
+        Autor novoAutor = new Autor();
+
         Scanner scanner = new Scanner(System.in);
 
         int opcao;
@@ -20,8 +23,6 @@ public class Main {
 
             switch (opcao){
                 case 1:
-                    Livro novoLivro = new Livro();
-                    Autor novoAutor = new Autor();
 
                     System.out.print("Digite o nome do livro que deseja cadastrar: ");
                     novoLivro.titulo = scanner.next();
@@ -59,10 +60,10 @@ public class Main {
                     } else {
                         for(Livro cadaLivro : listaLivros){
                             System.out.println();
-                            System.out.print("Título do livro: " + cadaLivro.titulo);
-                            System.out.print("Autor: " + cadaLivro.autor);
-                            System.out.print("Preço: " + cadaLivro.preco);
-                            System.out.print("Data de lançamento: " + cadaLivro.dataLancamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+                            System.out.println("Título do livro: " + cadaLivro.titulo);
+                            System.out.println("Autor: " + novoAutor.nome);
+                            System.out.println("Preço: R$" + cadaLivro.preco);
+                            System.out.println("Data de lançamento: " + cadaLivro.dataLancamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                             System.out.println();
                         }
                     }
