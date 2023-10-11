@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Autor novoAutor;
+        Livro novoLivro;
+
         ArrayList<Livro> listaLivros = new ArrayList<>();
 
         System.out.print("Bem vindo ao sistema de Sebo!");
-
-        Livro novoLivro = new Livro();
-        Autor novoAutor = new Autor();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -23,21 +23,28 @@ public class Main {
 
             switch (opcao){
                 case 1:
+                    novoAutor = new Autor();
+                    novoLivro = new Livro();
 
                     System.out.print("Digite o nome do livro que deseja cadastrar: ");
                     novoLivro.titulo = scanner.next();
+                    scanner.nextLine();
 
                     System.out.print("Digite o autor do livro que deseja cadastrar: ");
                     novoAutor.nome = scanner.next();
+                    scanner.nextLine();
 
                     System.out.print("Digite o local de nascimento do autor: ");
                     novoAutor.localNasc = scanner.next();
+                    scanner.nextLine();
 
                     System.out.print("Digite o preço do livro: ");
                     novoLivro.preco = scanner.nextFloat();
+                    scanner.nextLine();
 
                     System.out.print("Digite a data de lançamento do livro: ");
                     LocalDate date = LocalDate.parse(scanner.next(), DateTimeFormatter.ofPattern("dd/MM/yyy"));
+                    scanner.nextLine();
                     Period periodo = Period.between(date, LocalDate.now());
 
                     novoLivro.dataLancamento = date;
@@ -48,6 +55,8 @@ public class Main {
                         System.out.println("O livro tem menos de cinco anos de lançamento. \nVoltando ao menu anterior");
                         break;
                     }
+
+                    novoLivro.autor = novoAutor;
 
                     listaLivros.add(novoLivro);
 
@@ -61,7 +70,7 @@ public class Main {
                         for(Livro cadaLivro : listaLivros){
                             System.out.println();
                             System.out.println("Título do livro: " + cadaLivro.titulo);
-                            System.out.println("Autor: " + novoAutor.nome);
+                            System.out.println("Autor: " + cadaLivro.autor.nome);
                             System.out.println("Preço: R$" + cadaLivro.preco);
                             System.out.println("Data de lançamento: " + cadaLivro.dataLancamento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
                             System.out.println();
@@ -72,7 +81,7 @@ public class Main {
                     break;
 
                 case 0:
-                    System.out.print("Obrigado por usar o nosso sistema de Sebo!");
+                    System.out.println("Obrigado por usar o nosso sistema de Sebo!");
                     break;
 
                 default:
