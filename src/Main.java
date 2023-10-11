@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Autor novoAutor;
         Livro novoLivro;
 
         ArrayList<Livro> listaLivros = new ArrayList<>();
@@ -23,7 +22,7 @@ public class Main {
 
             switch (opcao){
                 case 1:
-                    novoAutor = new Autor();
+                    Autor novoAutor = new Autor();
                     novoLivro = new Livro();
 
                     System.out.print("Digite o nome do livro que deseja cadastrar: ");
